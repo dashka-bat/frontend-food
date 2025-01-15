@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { CategoryType } from "./types";
+import { CategoryType } from "@/app/_components/types";
 
 export default function FoodCetgory() {
   const [categories, setCategory] = useState<CategoryType[]>([]);
