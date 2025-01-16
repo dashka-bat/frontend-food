@@ -39,7 +39,7 @@ export default function FoodCetgory() {
           <Badge
             className="w-[145px] h-[36px] text-[14px] ml-5 rounded-full text-center mt-3"
             key={category._id}
-            variant="outline"
+            // variant="outline"
           >
             {category?.categoryName}
           </Badge>
