@@ -3,19 +3,23 @@ import { useState, useEffect } from "react";
 import { CategoryType } from "@/app/_components/types";
 import { Badge } from "@/components/ui/badge";
 import Food from "@/app/_components/food";
+import AddFood from "@/app/_components/addFood";
+import AddCategory from "@/app/_components/addCategory";
+import EditDish from "@/app/_components/editDishe";
 
 export default function FoodCetgory() {
   const [categories, setCategory] = useState<CategoryType[]>([]);
+  const [submit, setSubmit] = useState("");
+  const [modalopen, setModalopen] = useState(false);
 
   const addCategory = async () => {
-    const categoryName = prompt(`enter new category name`);
     const res = await fetch(`http://localhost:8000/food-category`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
 
-      body: JSON.stringify({ categoryName }),
+      body: JSON.stringify({ categories }),
     });
     const data = await res.json();
     setCategory([...categories, data.foodname]);
@@ -46,7 +50,7 @@ export default function FoodCetgory() {
         ))}
         <button
           className="bg-red-500 rounded-full w-[36px] h-[36px] ml-3"
-          onClick={addCategory}
+          onClick={() => setModalopen(true)}
         >
           +
         </button>
@@ -72,6 +76,9 @@ export default function FoodCetgory() {
           <Food />
           <Food />
         </div>
+        {/* <AddFood /> */}
+        {modalopen && <AddCategory />}
+        {/* <EditDish /> */}
       </div>
     </div>
   );
