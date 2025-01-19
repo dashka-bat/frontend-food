@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge";
 import { Microwave } from "lucide-react";
 import { Car } from "lucide-react";
 import { Settings } from "lucide-react";
-import { Children } from "react";
 export default function AdminLayout({
   children,
 }: Readonly<{

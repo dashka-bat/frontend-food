@@ -4,12 +4,25 @@ export function Footer() {
     <div>
       <div className="bg-[#18181B] h-[755px] w-screen">
         <div className="bg-[#18181B] h-[60px] w-screen"></div>
-        <div className="bg-red-500 h-20 text-[32px] flex gap-9 pl-24">
-          <p>Fresh Fast Delivered</p>
-          <p>Fresh Fast Delivered</p>
-          <p>Fresh Fast Delivered</p>
-          <p>Fresh Fast Delivered</p>
+        <div className="bg-[#EF4444]">
+          <div className="w-full h-[92px] bg-[#EF4444] overflow-hidden relative mt-[60px]">
+            <div className="absolute whitespace-nowrap animate-scroll text-white text-xl pt-8">
+              <span className="mx-24">Fresh fast delivered </span>
+              <span className="mx-24">Fresh fast delivered </span>
+              <span className="mx-24">Fresh fast delivered </span>
+              <span className="mx-24">Fresh fast delivered </span>
+              <span className="mx-24">Fresh fast delivered </span>
+            </div>
+          </div>
         </div>
+        {/* <div className="w-full h-[92px] bg-[#EF4444] overflow-hidden relative mt-[60px]">
+            <div className="absolute whitespace-nowrap animate-scroll text-white text-xl pt-8">
+              <span className="mx-24">Fresh fast delivered </span>
+              <span className="mx-24">Fresh fast delivered </span>
+              <span className="mx-24">Fresh fast delivered </span>
+              <span className="mx-24">Fresh fast delivered </span>
+              <span className="mx-24">Fresh fast delivered </span>
+            </div></div> */}
         <div className=" grid grid-cols-5 gap-5 mt-20 ml-16">
           <Logo />
           <div>
