@@ -5,7 +5,8 @@ import { CategoryType } from "./types";
 import { useState, useEffect } from "react";
 const [categories, setCategory] = useState<CategoryType[]>([]);
 const [submit, setSubmit] = useState("");
-const addCategory = async () => {
+useEffect(()=>{
+  const addCategory = async () => {
   const res = await fetch(`http://localhost:8000/food-category`, {
     method: "POST",
     headers: {
@@ -15,10 +16,12 @@ const addCategory = async () => {
     body: JSON.stringify({ categoryName: submit }),
   });
   const data = await res.json();
-  setCategory([...categories, data.foodname]);
-  console.log(data.foodname);
-};
-addCategory();
+  // setCategory([...categories, data.foodname]);
+  // console.log(data.foodname);
+};addCategory();
+})
+
+
 
 export default function AddCategory() {
   return (

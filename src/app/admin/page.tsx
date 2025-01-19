@@ -1,5 +1,5 @@
 "use client";
 import FoodCetgory from "../_components/foodcategory";
 export default function Home() {
-  return <div>daw</div>;
+  return <div>admin page</div>;
 }
