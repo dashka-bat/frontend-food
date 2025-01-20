@@ -11,6 +11,8 @@ export default function FoodCetgory() {
   const [categories, setCategory] = useState<CategoryType[]>([]);
   const [submit, setSubmit] = useState("");
   const [modalopen, setModalopen] = useState(false);
+  const [food, setFood] = useState(false);
+  const [editdish, setEditDish] = useState(false);
 
   const addCategory = async () => {
     const res = await fetch(`http://localhost:8000/food-category`, {
@@ -55,13 +57,16 @@ export default function FoodCetgory() {
           +
         </button>
       </div>
-      <div className="bg-white w-[1700px] h-screen ml-12 mt-10 rounded-xl">
+      <div className="bg-white w-[1700px] h-screen ml-12 mt-10 rounded-xl relative">
         <div>Appetizers</div>
         <div className="grid grid-cols-4 gap-3">
           <div>
             <div className="w-[270px] h-[241px] bg-white border-[2px] border-black rounded-xl ">
               {" "}
-              <button className="bg-red-500 rounded-full w-[36px] h-[36px] ml-[110px] mt-[80px]">
+              <button
+                className="bg-red-500 rounded-full w-[36px] h-[36px] ml-[110px] mt-[80px]"
+                onClick={() => setFood(true)}
+              >
                 +
               </button>
               <div>
@@ -69,16 +74,19 @@ export default function FoodCetgory() {
               </div>
             </div>
           </div>
-          <Food />
-          <Food />
-          <Food />
-          <Food />
-          <Food />
-          <Food />
+          <Food setEditDish={setEditDish} />
+          <Food setEditDish={setEditDish} />
+          <Food setEditDish={setEditDish} />
+          <Food setEditDish={setEditDish} />
+          <Food setEditDish={setEditDish} />
+          <Food setEditDish={setEditDish} />
         </div>
         {/* <AddFood /> */}
-        {modalopen && <AddCategory />}
-        {/* <EditDish /> */}
+        <div className="absolute top-[100px] left-[490px]">
+          {modalopen && <AddCategory setModalopen={setModalopen} />}
+          <div>{food && <AddFood setFood={setFood} />}</div>
+          <div>{editdish && <EditDish setEditDish={setEditDish} />}</div>
+        </div>
       </div>
     </div>
   );

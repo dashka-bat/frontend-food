@@ -1,4 +1,5 @@
 import { Logo } from "./logo";
+import "./styles.css";
 export function Footer() {
   return (
     <div>
@@ -6,7 +7,7 @@ export function Footer() {
         <div className="bg-[#18181B] h-[60px] w-screen"></div>
         <div className="bg-[#EF4444]">
           <div className="w-full h-[92px] bg-[#EF4444] overflow-hidden relative mt-[60px]">
-            <div className="absolute whitespace-nowrap animate-scroll text-white text-xl pt-8">
+            <div className="text-animation-infinite-scroll absolute whitespace-nowrap  text-white text-xl pt-8">
               <span className="mx-24">Fresh fast delivered </span>
               <span className="mx-24">Fresh fast delivered </span>
               <span className="mx-24">Fresh fast delivered </span>
@@ -15,14 +16,6 @@ export function Footer() {
             </div>
           </div>
         </div>
-        {/* <div className="w-full h-[92px] bg-[#EF4444] overflow-hidden relative mt-[60px]">
-            <div className="absolute whitespace-nowrap animate-scroll text-white text-xl pt-8">
-              <span className="mx-24">Fresh fast delivered </span>
-              <span className="mx-24">Fresh fast delivered </span>
-              <span className="mx-24">Fresh fast delivered </span>
-              <span className="mx-24">Fresh fast delivered </span>
-              <span className="mx-24">Fresh fast delivered </span>
-            </div></div> */}
         <div className=" grid grid-cols-5 gap-5 mt-20 ml-16">
           <Logo />
           <div>

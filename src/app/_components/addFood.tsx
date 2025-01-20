@@ -20,14 +20,17 @@ export function InputWithLabel() {
   );
 }
 
-export default function AddFood() {
+export default function AddFood({ setFood }: any) {
   return (
     <div>
       <div className="bg-white w-[460px] h-[592px] border-[2px] border-green-400">
         <div className="flex justify-between ">
           <div>Add new Dish to Appetizers</div>
           <div>
-            <button className="bg-white border-[2px] p-2 rounded-full">
+            <button
+              className="bg-white border-[2px] p-2 rounded-full"
+              onClick={() => setFood(false)}
+            >
               X
             </button>
           </div>
