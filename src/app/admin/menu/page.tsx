@@ -83,7 +83,13 @@ export default function FoodCetgory() {
         </div>
         {/* <AddFood /> */}
         <div className="absolute top-[100px] left-[490px]">
-          {modalopen && <AddCategory setModalopen={setModalopen} />}
+          {modalopen && (
+            <AddCategory
+              categories={categories}
+              setCategory={setCategory}
+              setModalopen={setModalopen}
+            />
+          )}
           <div>{food && <AddFood setFood={setFood} />}</div>
           <div>{editdish && <EditDish setEditDish={setEditDish} />}</div>
         </div>

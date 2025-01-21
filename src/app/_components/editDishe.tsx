@@ -11,25 +11,23 @@ import {
 } from "@/components/ui/popover";
 import { useState } from "react";
 
-
-
 export default function EditDish({ setEditDish }: any) {
-  const [image,setImage]=useState<string>("")
+  const [image, setImage] = useState<string>();
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
       if (event.target.files && event.target.files.length > 0) {
         const file = event.target.files[0];
         const data = new FormData();
         data.append("file", file);
-        data.append("upload_preset", "Food_delivery");
-  
+        data.append("upload_preset", "food-delivery");
+
         const response = await fetch(
-          `https://api.cloudinary.com/v1_1/df88yvhqr/upload`,
+          `https://api.cloudinary.com/v1_1/dxkgrtted/upload`,
           { method: "POST", body: data }
         );
-  
+
         if (!response.ok) throw new Error("Image upload failed");
-  
+
         const dataJson = await response.json();
         setImage(dataJson.secure_url);
       }
@@ -37,7 +35,7 @@ export default function EditDish({ setEditDish }: any) {
       console.error("Error uploading image:", error);
       alert("Failed to upload image. Please try again.");
     }
-  }
+  };
   return (
     <div>
       <div className="bg-white w-[472px] h-[596px] border-[2px] border-e-red-700">
@@ -92,11 +90,13 @@ export default function EditDish({ setEditDish }: any) {
         <div className="flex justify-between">
           <div>image</div>
           <div>
-            <input onChange={handleUpload}
+            <input
+              onChange={handleUpload}
               type="file"
               className="w-[288px] h-[116px] border-[2px]"
             ></input>
           </div>
+          <img src={image} className="w-[200px] h-[100px]"></img>
         </div>
         <div className="flex justify-between">
           <div>
@@ -105,7 +105,7 @@ export default function EditDish({ setEditDish }: any) {
             </button>
           </div>
           <div>
-            <Button onClick={()=>setEditDish(false)}>save changes</Button>
+            <Button onClick={() => setEditDish(false)}>save changes</Button>
           </div>
         </div>
       </div>
