@@ -17,7 +17,7 @@ export default function Home() {
     });
     const data = await res.json();
     setCategory([...categories, data.foodname]);
-    console.log(data.foodname);
+   
   };
   useEffect(() => {
     const fetchData = async () => {

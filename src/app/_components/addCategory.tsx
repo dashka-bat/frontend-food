@@ -21,9 +21,9 @@ export default function AddCategory({
       body: JSON.stringify({ categoryName: submit }),
     });
     const data = await res.json();
-    console.log(data);
+    
     setCategory([...categories, data.foodname]);
-    console.log(data.foodname.categoryName);
+    
     setModalopen(false);
   };
   return (

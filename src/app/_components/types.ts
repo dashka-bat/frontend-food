@@ -5,7 +5,10 @@ export type CategoryType = {
 export type foodType = {
   foodName: String;
   price: String;
-  category: any;
+  category: {
+    categoryName:String
+
+  };
   image: any;
   ingerdients: String;
   _id: string;

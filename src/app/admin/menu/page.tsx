@@ -6,6 +6,7 @@ import Food from "@/app/_components/food";
 import AddFood from "@/app/_components/addFood";
 import AddCategory from "@/app/_components/addCategory";
 import EditDish from "@/app/_components/editDishe";
+import { OneFood } from "@/app/_components/onFood";
 
 export default function FoodCetgory() {
   const [categories, setCategory] = useState<CategoryType[]>([]);
@@ -25,7 +26,7 @@ export default function FoodCetgory() {
     });
     const data = await res.json();
     setCategory([...categories, data.foodname]);
-    console.log(data.foodname);
+    
   };
 
   useEffect(() => {
@@ -58,29 +59,10 @@ export default function FoodCetgory() {
         </button>
       </div>
       <div className="bg-white w-[1700px] h-screen ml-12 mt-10 rounded-xl relative">
-        <div>Appetizers</div>
-        <div className="grid grid-cols-4 gap-3">
-          <div>
-            <div className="w-[270px] h-[241px] bg-white border-[2px] border-black rounded-xl ">
-              {" "}
-              <button
-                className="bg-red-500 rounded-full w-[36px] h-[36px] ml-[110px] mt-[80px]"
-                onClick={() => setFood(true)}
-              >
-                +
-              </button>
-              <div>
-                Add new Dish to <div>Appzetires</div>
-              </div>
-            </div>
-          </div>
-          <Food setEditDish={setEditDish} />
-          <Food setEditDish={setEditDish} />
-          <Food setEditDish={setEditDish} />
-          <Food setEditDish={setEditDish} />
-          <Food setEditDish={setEditDish} />
-          <Food setEditDish={setEditDish} />
-        </div>
+        <div><OneFood setEditDish={setEditDish} setFood={setFood}/></div>
+        <div><OneFood setEditDish={setEditDish} setFood={setFood}/></div>
+        <div><OneFood setEditDish={setEditDish} setFood={setFood}/></div>
+        <div><OneFood setEditDish={setEditDish} setFood={setFood}/></div>
         {/* <AddFood /> */}
         <div className="absolute top-[100px] left-[490px]">
           {modalopen && (
@@ -92,8 +74,9 @@ export default function FoodCetgory() {
           )}
           <div>{food && <AddFood setFood={setFood} />}</div>
           <div>{editdish && <EditDish setEditDish={setEditDish} />}</div>
-        </div>
+        </div>  
       </div>
+    
     </div>
   );
 }

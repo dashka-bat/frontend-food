@@ -21,6 +21,7 @@ export default function Food({ setEditDish }: any) {
     };
     fetchData();
   });
+ 
   return (
     <div>
       <div className="w-[270px] h-[241px] bg-white border-[2px] border-black rounded-xl">

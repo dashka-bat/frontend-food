@@ -38,7 +38,7 @@ export default function AddFood({ setFood }: any) {
       const res = await fetch(`http://localhost:8000/food`);
       const data = await res.json();
       setOneFood(data);
-      console.log(data);
+     
     };
   });
 
