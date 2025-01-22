@@ -17,7 +17,6 @@ export default function Home() {
     });
     const data = await res.json();
     setCategory([...categories, data.foodname]);
-   
   };
   useEffect(() => {
     const fetchData = async () => {
@@ -39,10 +38,10 @@ export default function Home() {
       </div>
       <div>
         Categories
-        <div className="snap-both flex space-x-4 animate-bounce">
+        <div className="flex gap-4">
           {categories?.map((category) => (
             <div key={category._id}>
-              <Badge>{category.categoryName}</Badge>
+              <Badge className="text-[20px]">{category.categoryName}</Badge>
             </div>
           ))}
         </div>

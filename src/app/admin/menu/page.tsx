@@ -26,7 +26,6 @@ export default function FoodCetgory() {
     });
     const data = await res.json();
     setCategory([...categories, data.foodname]);
-    
   };
 
   useEffect(() => {
@@ -42,10 +41,13 @@ export default function FoodCetgory() {
     <div>
       <div className="bg-white h-[236px] w-[1700px] rounded-xl mt-20 ml-11">
         <div>Dishes Category</div>
+        <div>
+          <Badge className="w-[150px] h-[40px] text-[16px]">All dishes</Badge>
+        </div>
         {categories?.map((category) => (
           <Badge
             className="w-[145px] h-[36px] text-[14px] ml-5 rounded-full text-center mt-3"
-            key={category._id}
+
             // variant="outline"
           >
             {category?.categoryName}
@@ -59,10 +61,18 @@ export default function FoodCetgory() {
         </button>
       </div>
       <div className="bg-white w-[1700px] h-screen ml-12 mt-10 rounded-xl relative">
-        <div><OneFood setEditDish={setEditDish} setFood={setFood}/></div>
-        <div><OneFood setEditDish={setEditDish} setFood={setFood}/></div>
-        <div><OneFood setEditDish={setEditDish} setFood={setFood}/></div>
-        <div><OneFood setEditDish={setEditDish} setFood={setFood}/></div>
+        <div>
+          <OneFood setEditDish={setEditDish} setFood={setFood} />
+        </div>
+        {/* <div>
+          <OneFood setEditDish={setEditDish} setFood={setFood} />
+        </div>
+        <div>
+          <OneFood setEditDish={setEditDish} setFood={setFood} />
+        </div>
+        <div>
+          <OneFood setEditDish={setEditDish} setFood={setFood} />
+        </div> */}
         {/* <AddFood /> */}
         <div className="absolute top-[100px] left-[490px]">
           {modalopen && (
@@ -74,9 +84,8 @@ export default function FoodCetgory() {
           )}
           <div>{food && <AddFood setFood={setFood} />}</div>
           <div>{editdish && <EditDish setEditDish={setEditDish} />}</div>
-        </div>  
+        </div>
       </div>
-    
     </div>
   );
 }

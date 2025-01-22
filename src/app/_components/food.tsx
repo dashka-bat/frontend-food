@@ -21,16 +21,16 @@ export default function Food({ setEditDish }: any) {
     };
     fetchData();
   });
- 
+
   return (
     <div>
-      <div className="w-[270px] h-[241px] bg-white border-[2px] border-black rounded-xl">
+      <div className="w-[300px] h-[241px] bg-white border-[2px] border-black rounded-xl">
         {oneFood?.map((food) => (
           <div key={food._id}>
             {food.foodName}
             <div>
               {" "}
-              <img className="w-[200px] h-[100px]" src={food.image} alt="" />
+              <img className="w-[100px]" src={food.image} alt="" />
             </div>
             <div>{food.ingerdients}</div>
             <div>{food.price}$</div>
