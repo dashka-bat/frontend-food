@@ -24,24 +24,36 @@ export default function Food({ setEditDish }: any) {
 
   return (
     <div>
-      <div className="w-[300px] h-[241px] bg-white border-[2px] border-black rounded-xl">
-        {oneFood?.map((food) => (
-          <div key={food._id}>
-            {food.foodName}
-            <div>
-              {" "}
-              <img className="w-[100px]" src={food.image} alt="" />
+      <div className="flex gap-5">
+        {oneFood
+          // ?.filter((oneFood) => {
+          //   return oneFood.category?.categoryName === "drinks";
+          // })
+          .map((food) => (
+            <div
+              key={food._id}
+              className="w-[300px] h-[241px] bg-white border-[2px] border-black rounded-xl "
+            >
+              <div>
+                {food.foodName}
+                <div>
+                  {" "}
+                  <img className="w-[100px]" src={food.image} alt="" />
+                </div>
+                <div>{food.ingerdients}</div>
+                <div>{food.price}$</div>
+              </div>{" "}
+              <div>
+                {" "}
+                <button
+                  onClick={() => setEditDish(true)}
+                  className="border-[2px] border-red-500"
+                >
+                  <Pencil />
+                </button>
+              </div>
             </div>
-            <div>{food.ingerdients}</div>
-            <div>{food.price}$</div>
-          </div>
-        ))}
-        <button
-          onClick={() => setEditDish(true)}
-          className="border-[2px] border-red-500"
-        >
-          <Pencil />
-        </button>
+          ))}
       </div>
     </div>
   );

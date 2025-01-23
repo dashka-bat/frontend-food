@@ -8,7 +8,7 @@ import AddCategory from "@/app/_components/addCategory";
 import EditDish from "@/app/_components/editDishe";
 import { OneFood } from "@/app/_components/onFood";
 
-export default function FoodCetgory() {
+export default function FoodCetgory(oneFood: any) {
   const [categories, setCategory] = useState<CategoryType[]>([]);
   const [submit, setSubmit] = useState("");
   const [modalopen, setModalopen] = useState(false);
@@ -62,7 +62,25 @@ export default function FoodCetgory() {
       </div>
       <div className="bg-white w-[1700px] h-screen ml-12 mt-10 rounded-xl relative">
         <div>
-          <OneFood setEditDish={setEditDish} setFood={setFood} />
+          <OneFood
+            oneFood={oneFood}
+            setEditDish={setEditDish}
+            setFood={setFood}
+          />
+        </div>
+        <div>
+          <OneFood
+            oneFood={oneFood}
+            setEditDish={setEditDish}
+            setFood={setFood}
+          />
+        </div>
+        <div>
+          <OneFood
+            oneFood={oneFood}
+            setEditDish={setEditDish}
+            setFood={setFood}
+          />
         </div>
         {/* <div>
           <OneFood setEditDish={setEditDish} setFood={setFood} />

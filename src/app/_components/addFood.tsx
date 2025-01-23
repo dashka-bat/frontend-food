@@ -24,20 +24,65 @@ import { foodType } from "./types";
 
 export default function AddFood({ setFood }: any) {
   const [oneFood, setOneFood] = useState<foodType[]>([]);
+  const [foodname, setFoodname] = useState("");
+  const [price, setPrice] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [image, setImage] = useState("");
+  const [category, setCategory] = useState("");
+  const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    try {
+      if (event.target.files && event.target.files.length > 0) {
+        const file = event.target.files[0];
+        const data = new FormData();
+        data.append("file", file);
+        data.append("upload_preset", "food-delivery");
+
+        const response = await fetch(
+          `https://api.cloudinary.com/v1_1/dxkgrtted/upload`,
+          { method: "POST", body: data }
+        );
+
+        if (!response.ok) throw new Error("Image upload failed");
+
+        const dataJson = await response.json();
+        setImage(dataJson.secure_url);
+      }
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      alert("Failed to upload image. Please try again.");
+    }
+  };
   const addFood = async () => {
     const res = await fetch(`http://localhost:8000/food`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        foodName: foodname,
+        price: price,
+        ingerdients: ingredients,
+        image: image,
+      }),
     });
+    setFood(false);
   };
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(`http://localhost:8000/food`);
       const data = await res.json();
-      setOneFood(data);
+      console.log(data);
+      setOneFood([
+        ...oneFood,
+        data.foodName,
+        data.price,
+        data.ingerdients,
+        data.image,
+      ]);
+      // setFoodname(data.foodname);
+      // setPrice(data.price);
+      // setIngredients(data.ingredients);
+      // setImage(data.image);
     };
     fetchData();
   }, []);
@@ -59,16 +104,29 @@ export default function AddFood({ setFood }: any) {
         <div className="flex">
           <div>
             Food name
-            <Input onChange={(e) => {}} placeholder="Type of food"></Input>
+            <Input
+              onChange={(e) => {
+                setFoodname(e.target.value);
+              }}
+              placeholder="Type of food"
+            ></Input>
           </div>
           <div>
             Foood price
-            <Input placeholder="Enter price"></Input>
+            <Input
+              onChange={(e) => {
+                setPrice(e.target.value);
+              }}
+              placeholder="Enter price"
+            ></Input>
           </div>
         </div>
         <div>
           ingredients
           <Input
+            onChange={(e) => {
+              setIngredients(e.target.value);
+            }}
             placeholder="List ingredients"
             className="w-[412px] h-[90px]"
           ></Input>
@@ -76,11 +134,15 @@ export default function AddFood({ setFood }: any) {
         <div>
           Food image
           <input
+            onChange={handleUpload}
             type="file"
             className="w-[412px] h-[138px] bg-slate-400"
           ></input>
+          <div>
+            <img src={image}></img>
+          </div>
         </div>
-        <Button>Add Dish</Button>
+        <Button onClick={addFood}>Add Dish</Button>
       </div>
     </div>
   );

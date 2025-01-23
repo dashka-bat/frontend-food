@@ -13,15 +13,19 @@ export function OneFood({ setFood, setEditDish }: any) {
     };
     Data();
   }, []);
-  console.log(category);
+  // console.log(category);
 
   return (
     <div>
       <div>
         <div>
-          {category?.map((food) => (
-            <div key={food._id}>{food.category?.categoryName}</div>
-          ))}
+          {category
+            ?.filter((category) => {
+              return category.category?.categoryName === "pizza";
+            })
+            ?.map((food) => (
+              <div key={food._id}>{food.category?.categoryName}</div>
+            ))}
         </div>
         <div></div>
         <div className="grid grid-cols-4 gap-3">
