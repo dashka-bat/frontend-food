@@ -9,10 +9,21 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 
 export default function EditDish({ setEditDish }: any) {
+  const [editfood, setEditFood] = useState([]);
   const [image, setImage] = useState<string>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch(`http://localhost:8000/food`);
+      const data = await res.json();
+      setEditFood(data);
+      console.log(data);
+    };
+    fetchData();
+  }, []);
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
       if (event.target.files && event.target.files.length > 0) {

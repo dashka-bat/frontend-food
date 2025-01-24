@@ -20,11 +20,14 @@ export function OneFood({ setFood, setEditDish }: any) {
       <div>
         <div>
           {category
-            ?.filter((category) => {
-              return category.category?.categoryName === "pizza";
-            })
+            // ?.filter((category) => {
+            //   return category._id === "615f4b3b7b3b3b1b3c7b3b3b";
+            // })
             ?.map((food) => (
-              <div key={food._id}>{food.category?.categoryName}</div>
+              <div key={food._id}>
+                {food.category?.categoryName}
+                {/* <div>{food._id}</div> */}
+              </div>
             ))}
         </div>
         <div></div>

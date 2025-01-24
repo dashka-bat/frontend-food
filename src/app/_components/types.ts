@@ -4,7 +4,7 @@ export type CategoryType = {
 };
 export type foodType = {
   foodName: String;
-  price: Number;
+  price: any;
   category: {
     categoryName: String;
   };

@@ -28,7 +28,7 @@ export default function AddFood({ setFood }: any) {
   const [price, setPrice] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [image, setImage] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState([]);
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
       if (event.target.files && event.target.files.length > 0) {
@@ -63,6 +63,7 @@ export default function AddFood({ setFood }: any) {
         price: price,
         ingerdients: ingredients,
         image: image,
+        category: category,
       }),
     });
     setFood(false);
@@ -78,6 +79,7 @@ export default function AddFood({ setFood }: any) {
         data.price,
         data.ingerdients,
         data.image,
+        data.category,
       ]);
       // setFoodname(data.foodname);
       // setPrice(data.price);
@@ -91,7 +93,12 @@ export default function AddFood({ setFood }: any) {
     <div>
       <div className="bg-white w-[460px] h-[592px] border-[2px] border-green-400">
         <div className="flex justify-between ">
-          <div>Add new Dish to Appetizers</div>
+          <div>
+            Add new Dish to{" "}
+            {category.map(() => (
+              <div>{category}</div>
+            ))}
+          </div>
           <div>
             <button
               className="bg-white border-[2px] p-2 rounded-full"

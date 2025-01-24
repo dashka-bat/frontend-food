@@ -7,6 +7,8 @@ import AddFood from "@/app/_components/addFood";
 import AddCategory from "@/app/_components/addCategory";
 import EditDish from "@/app/_components/editDishe";
 import { OneFood } from "@/app/_components/onFood";
+import Link from "next/link";
+import Login from "@/app/_components/login";
 
 export default function FoodCetgory(oneFood: any) {
   const [categories, setCategory] = useState<CategoryType[]>([]);
@@ -41,11 +43,15 @@ export default function FoodCetgory(oneFood: any) {
     <div>
       <div className="bg-white h-[236px] w-[1700px] rounded-xl mt-20 ml-11">
         <div>Dishes Category</div>
-        <div>
-          <Badge className="w-[150px] h-[40px] text-[16px]">All dishes</Badge>
-        </div>
+        <Link href={"/admin/menu"}>
+          <div>
+            <Badge className="w-[150px] h-[40px] text-[16px]">All dishes</Badge>
+          </div>
+        </Link>
+
         {categories?.map((category) => (
           <Badge
+            key={category._id}
             className="w-[145px] h-[36px] text-[14px] ml-5 rounded-full text-center mt-3"
 
             // variant="outline"
@@ -68,20 +74,7 @@ export default function FoodCetgory(oneFood: any) {
             setFood={setFood}
           />
         </div>
-        <div>
-          <OneFood
-            oneFood={oneFood}
-            setEditDish={setEditDish}
-            setFood={setFood}
-          />
-        </div>
-        <div>
-          <OneFood
-            oneFood={oneFood}
-            setEditDish={setEditDish}
-            setFood={setFood}
-          />
-        </div>
+        {/* x */}
         {/* <div>
           <OneFood setEditDish={setEditDish} setFood={setFood} />
         </div>
