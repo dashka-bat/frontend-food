@@ -11,18 +11,42 @@ import {
 } from "@/components/ui/popover";
 import { use, useEffect, useState } from "react";
 
-export default function EditDish({ setEditDish }: any) {
+type Props={
+  food: {
+    _id: string;
+    foodName: string;
+    price: string;
+    image: string;
+    ingredients: string;
+    category: string;
+  };
+}
+
+export default function EditDish({ setEditDish }: any,{food}:Props) {
   const [editfood, setEditFood] = useState([]);
+  const [foodname,setFoodname]=useState<String>(food.foodName)
+  const [newFoodIngredients, setNewFoodIngredients] = useState<string>(
+    food.ingredients
+  );
+  const [newCategory, setNewCategory] = useState<string>(food.category);
+  const [newPrice, setNewPrice] = useState<string>(food.price);
+  const [newImage, setNewImage] = useState<string>(food.image);
   const [image, setImage] = useState<string>();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch(`http://localhost:8000/food`);
-      const data = await res.json();
-      setEditFood(data);
-      console.log(data);
+    const DeleteFood = async () => {
+      const response = await fetch(`http://localhost:8000/food${food._id}`,{
+        method:"DELETE",
+      });
+      if(response.ok){
+
+      }else
+      {}
+      // const data = await response.json();
+      // setEditFood(data);
+      // console.log(data);
     };
-    fetchData();
+   DeleteFood()
   }, []);
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     try {
@@ -111,7 +135,7 @@ export default function EditDish({ setEditDish }: any) {
         </div>
         <div className="flex justify-between">
           <div>
-            <button className="border-[2px] border-red-500 w-[48px] h-[40px] rounded-md flex justify-center items-center">
+            <button  className="border-[2px] border-red-500 w-[48px] h-[40px] rounded-md flex justify-center items-center">
               <Trash></Trash>
             </button>
           </div>

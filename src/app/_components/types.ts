@@ -1,10 +1,10 @@
 export type CategoryType = {
-  categoryName: any;
+  categoryName: String;
   _id: string;
 };
 export type foodType = {
   foodName: String;
-  price: any;
+  price: Number;
   category: {
     categoryName: String;
   };
